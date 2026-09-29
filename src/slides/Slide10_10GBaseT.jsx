@@ -98,26 +98,58 @@ export function Slide10_10GBaseT() {
         </div>
 
         {/* Right: Technical Challenges */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-          <div className="glass-card" style={{ borderLeft: '6px solid #d97706' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-              <ShieldAlert size={18} color="#d97706" />
-              <h3 style={{ fontSize: '0.98rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>El Enemigo: Alien Crosstalk (ANEXT)</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', height: '100%' }}>
+          <div className="glass-card" style={{ flex: 1, borderLeft: '6px solid #d97706', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '0.5rem' }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <ShieldAlert size={20} color="#d97706" />
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>
+                    Alien Crosstalk (ANEXT)
+                  </h3>
+                </div>
+                <span style={{ fontSize: '0.74rem', background: '#fef3c7', border: '1.5px solid #111', borderRadius: '6px', padding: '2px 7px', fontWeight: '800', color: '#d97706', fontFamily: 'JetBrains Mono' }}>
+                  RUIDO EXTERNO
+                </span>
+              </div>
+              <p style={{ fontSize: '0.86rem', color: '#475569', lineHeight: '1.45' }}>
+                A <strong>500 MHz</strong>, la energía electromagnética escapa de la cubierta e invade cables vecinos en la misma canaleta.
+              </p>
             </div>
-            <p style={{ fontSize: '0.86rem', color: '#475569', lineHeight: '1.45' }}>
-              A 500 MHz, la radiación electromagnética se fuga del cable e interfiere en los cables vecinos dentro de la misma canaleta. Como este ruido proviene de un cable independiente, <strong>el DSP no puede cancelarlo</strong> porque no conoce la señal invasora.
-            </p>
+
+            <div className="inner-box" style={{ fontSize: '0.82rem', color: '#111111', lineHeight: '1.4' }}>
+              <strong>Límite DSP:</strong> Al provenir de cables independientes no sincronizados, el procesador <em>no puede predecir ni cancelar</em> la señal invasora sin blindaje físico (Cat 6a).
+            </div>
           </div>
 
-          <div className="glass-card" style={{ borderLeft: '6px solid #e11d48' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-              <Flame size={18} color="#e11d48" />
-              <h3 style={{ fontSize: '0.98rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>Los Costos: Consumo Térmico y Latencia</h3>
+          <div className="glass-card" style={{ flex: 1, borderLeft: '6px solid #e11d48', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '0.5rem' }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Flame size={20} color="#e11d48" />
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>
+                    Consumo Térmico y Latencia
+                  </h3>
+                </div>
+                <span style={{ fontSize: '0.74rem', background: '#ffe4e6', border: '1.5px solid #111', borderRadius: '6px', padding: '2px 7px', fontWeight: '800', color: '#e11d48', fontFamily: 'JetBrains Mono' }}>
+                  TECHO COBRE
+                </span>
+              </div>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.84rem', color: '#475569', marginTop: '0.25rem' }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#e11d48', display: 'inline-block' }} />
+                  <span><strong>Disipación Térmica:</strong> 4 a 8W por puerto en switches densos.</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#e11d48', display: 'inline-block' }} />
+                  <span><strong>Latencia LDPC:</strong> Añade 2 a 3 µs por salto de conmutación.</span>
+                </li>
+              </ul>
             </div>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.86rem', color: '#475569' }}>
-              <li><strong>Consumo Energético:</strong> Los primeros transceptores consumían 4-8W por puerto, generando calor masivo en switches densos.</li>
-              <li><strong>Latencia por LDPC:</strong> El algoritmo de corrección añade entre 2 y 3 microsegundos por salto, crítico para trading financiero o centros de cómputo.</li>
-            </ul>
+
+            <div className="inner-box" style={{ fontSize: '0.82rem', color: '#111111', lineHeight: '1.4' }}>
+              <strong>Consecuencia en Datacenters:</strong> Impulsó la adopción de fibra óptica (SFP+) y cables Direct Attach Copper (DAC/Twinax).
+            </div>
           </div>
         </div>
       </div>

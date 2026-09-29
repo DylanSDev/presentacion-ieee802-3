@@ -96,7 +96,7 @@ export function Slide14_PoE() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     gap: '4px',
-                    fontSize: '0.76rem',
+                    fontSize: '0.74rem',
                     fontWeight: isSel ? '800' : '700',
                     fontFamily: 'Fredoka, Outfit',
                     transition: 'all 0.15s ease',
@@ -111,59 +111,61 @@ export function Slide14_PoE() {
           </div>
 
           {/* SVG Power Flow Animation */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <svg width="100%" height="130" viewBox="0 0 400 130" style={{ background: '#f1f8fc', borderRadius: '10px', border: '2px solid #111111' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '0.4rem' }}>
+            <svg width="100%" height="120" viewBox="0 0 400 120" style={{ background: '#f1f8fc', borderRadius: '10px', border: '2px solid #111111' }}>
               {/* PoE Switch (PSE) */}
-              <rect x="20" y="25" width="80" height="80" rx="8" fill="#ffffff" stroke="#111111" strokeWidth="2.5" />
-              <text x="60" y="60" fill="#0284c7" fontSize="10" fontWeight="800" fontFamily="Fredoka, Outfit" textAnchor="middle">SWITCH PoE</text>
-              <text x="60" y="75" fill="#64748b" fontSize="8.5" fontWeight="600" textAnchor="middle">(PSE Fuente)</text>
+              <rect x="20" y="20" width="80" height="80" rx="8" fill="#ffffff" stroke="#111111" strokeWidth="2.5" />
+              <text x="60" y="55" fill="#0284c7" fontSize="10" fontWeight="800" fontFamily="Fredoka, Outfit" textAnchor="middle">SWITCH PoE</text>
+              <text x="60" y="70" fill="#64748b" fontSize="8.5" fontWeight="600" textAnchor="middle">(PSE Fuente)</text>
 
               {/* UTP Cable carrying data (Cyan) + Power (Gold) */}
-              <line x1="100" y1="50" x2="300" y2="50" stroke="#0284c7" strokeWidth="3" strokeDasharray="6 4">
+              <line x1="100" y1="45" x2="300" y2="45" stroke="#0284c7" strokeWidth="3" strokeDasharray="6 4">
                 <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite" />
               </line>
-              <text x="200" y="42" fill="#0284c7" fontSize="9" fontWeight="bold" textAnchor="middle">DATOS ETHERNET (1G / 10G)</text>
+              <text x="200" y="38" fill="#0284c7" fontSize="9" fontWeight="bold" textAnchor="middle">DATOS ETHERNET (1G / 10G)</text>
 
-              <line x1="100" y1="80" x2="300" y2="80" stroke="#d97706" strokeWidth="4">
+              <line x1="100" y1="75" x2="300" y2="75" stroke="#d97706" strokeWidth="4">
                 <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" />
               </line>
-              <text x="200" y="98" fill="#d97706" fontSize="9.5" fontWeight="bold" fontFamily="JetBrains Mono" textAnchor="middle">ENERGÍA DC: {dev.maxPower} (48V)</text>
+              <text x="200" y="94" fill="#d97706" fontSize="9.5" fontWeight="bold" fontFamily="JetBrains Mono" textAnchor="middle">ENERGÍA DC: {dev.maxPower} (48V)</text>
 
               {/* End Device (PD) */}
-              <rect x="300" y="25" width="80" height="80" rx="8" fill="#ffffff" stroke="#111111" strokeWidth="2.5" />
-              <text x="340" y="60" fill={dev.color} fontSize="9.5" fontWeight="800" fontFamily="Fredoka, Outfit" textAnchor="middle">{selectedDevice.toUpperCase()}</text>
-              <text x="340" y="75" fill="#059669" fontSize="9" fontWeight="bold" textAnchor="middle">({dev.powerReq})</text>
+              <rect x="300" y="20" width="80" height="80" rx="8" fill="#ffffff" stroke="#111111" strokeWidth="2.5" />
+              <text x="340" y="55" fill={dev.color} fontSize="9.5" fontWeight="800" fontFamily="Fredoka, Outfit" textAnchor="middle">{selectedDevice.toUpperCase()}</text>
+              <text x="340" y="70" fill="#059669" fontSize="9" fontWeight="bold" textAnchor="middle">({dev.powerReq})</text>
             </svg>
           </div>
         </div>
 
         {/* Right: Selected Standard Details */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div className="glass-card" style={{ borderLeft: `6px solid ${dev.color}` }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-              <DevIcon size={20} color={dev.color} />
-              <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{dev.name}</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', height: '100%' }}>
+          <div className="glass-card" style={{ flex: 1, borderLeft: `6px solid ${dev.color}`, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '0.5rem' }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
+                <DevIcon size={20} color={dev.color} />
+                <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{dev.name}</h3>
+              </div>
+              <p style={{ fontSize: '0.86rem', color: '#475569', lineHeight: '1.4' }}>
+                Alimentación continua sobre el mismo conector RJ-45 sin tomas de 220V/110V dedicadas ni fuentes externas.
+              </p>
             </div>
-            <p style={{ fontSize: '0.86rem', color: '#475569', lineHeight: '1.4' }}>
-              Requiere alimentación continua entregada por la misma toma RJ-45 sin adaptadores de corriente ni tomas de pared a 220V/110V.
-            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
+              <div className="inner-box" style={{ padding: '0.45rem 0.75rem' }}>
+                <div style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Potencia PSE Máxima</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: '800', color: dev.color, fontFamily: 'Fredoka, Outfit' }}>{dev.maxPower}</div>
+              </div>
+              <div className="inner-box" style={{ padding: '0.45rem 0.75rem' }}>
+                <div style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Pares Utilizados</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{dev.pairs}</div>
+              </div>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
-            <div className="inner-box">
-              <div style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Potencia PSE Máxima</div>
-              <div style={{ fontSize: '1.15rem', fontWeight: '800', color: dev.color, fontFamily: 'Fredoka, Outfit' }}>{dev.maxPower}</div>
-            </div>
-            <div className="inner-box">
-              <div style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Pares Utilizados</div>
-              <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{dev.pairs}</div>
-            </div>
-          </div>
-
-          <div className="glass-card" style={{ padding: '0.85rem' }}>
-            <div style={{ fontSize: '0.82rem', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="glass-card" style={{ padding: '0.75rem 0.95rem' }}>
+            <div style={{ fontSize: '0.82rem', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px', lineHeight: '1.38' }}>
               <CheckCircle2 size={18} color="#059669" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-              <span>PoE funciona aplicando voltaje en modo común a través de transformadores de aislamiento, sin interferir con la señal diferencial de datos.</span>
+              <span><strong>Aislamiento en Modo Común:</strong> Se inyecta la corriente continua a través del punto medio de transformadores, sin distorsionar la señal diferencial de datos.</span>
             </div>
           </div>
         </div>

@@ -68,32 +68,41 @@ export function Slide13_WhyCopperWins() {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.85rem',
+                justifyContent: 'space-between',
                 borderTop: `6px solid ${p.color}`,
                 background: isSelected ? '#f0f9ff' : '#ffffff',
                 boxShadow: isSelected ? '6px 6px 0px #111111' : '3.5px 3.5px 0px #111111',
-                transform: isSelected ? 'translate(-2px, -2px)' : 'none'
+                transform: isSelected ? 'translate(-2px, -2px)' : 'none',
+                padding: '1.1rem 1.15rem'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <div className="bullet-icon" style={{ borderColor: '#111', color: p.color, background: '#ffffff', boxShadow: '2px 2px 0px #111' }}>
-                  <Icon size={18} strokeWidth={2.4} />
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.4rem' }}>
+                  <div className="bullet-icon" style={{ borderColor: '#111', color: p.color, background: '#ffffff', boxShadow: '2px 2px 0px #111' }}>
+                    <Icon size={18} strokeWidth={2.4} />
+                  </div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{p.title}</h3>
                 </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{p.title}</h3>
+
+                <p style={{ fontSize: '0.84rem', color: p.color, fontWeight: '800', fontFamily: 'Fredoka, Outfit', marginBottom: '0.65rem' }}>
+                  {p.desc}
+                </p>
+
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                  {p.points.map((pt, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', fontSize: '0.82rem', color: '#475569', lineHeight: '1.38' }}>
+                      <CheckCircle2 size={15} color={p.color} style={{ flexShrink: 0, marginTop: '2px' }} strokeWidth={2.4} />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <p style={{ fontSize: '0.84rem', color: p.color, fontWeight: '800', fontFamily: 'Fredoka, Outfit' }}>
-                {p.desc}
-              </p>
-
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.3rem' }}>
-                {p.points.map((pt, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', fontSize: '0.84rem', color: '#475569', lineHeight: '1.4' }}>
-                    <CheckCircle2 size={15} color={p.color} style={{ flexShrink: 0, marginTop: '2px' }} strokeWidth={2.4} />
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="inner-box" style={{ marginTop: '0.65rem', padding: '0.45rem 0.75rem', fontSize: '0.78rem', fontWeight: '700', color: '#111111', textAlign: 'center' }}>
+                {idx === 0 && '💰 Menor costo por puerto global'}
+                {idx === 1 && '🛡️ Resiste tracción y radios cerrados'}
+                {idx === 2 && '⚡ Suministro eléctrico de hasta 90W'}
+              </div>
             </div>
           );
         })}

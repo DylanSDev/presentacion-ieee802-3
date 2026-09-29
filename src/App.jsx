@@ -189,7 +189,7 @@ function App() {
   const renderSlideContent = () => {
     switch (currentSlide) {
       case 1:
-        return <Slide01_Hero onStart={handleNext} />;
+        return <Slide01_Hero onStart={handleNext} onSelectSlide={handleSelectSlide} />;
       case 2:
         return <Slide02_OSI />;
       case 3:

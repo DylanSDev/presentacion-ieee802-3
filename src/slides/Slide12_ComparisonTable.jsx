@@ -63,19 +63,19 @@ export function Slide12_ComparisonTable() {
         </p>
       </div>
 
-      <div className="slide-body" style={{ display: 'flex', flexDirection: 'column' }}>
-        <div className="glass-card" style={{ flex: 1, padding: '0.85rem', overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.86rem' }}>
+      <div className="slide-body" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div className="glass-card" style={{ padding: '0.65rem 0.85rem', overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.84rem' }}>
             <thead>
               <tr style={{ borderBottom: '2.5px solid #111111', background: '#f1f8fc' }}>
-                <th style={{ padding: '0.75rem 1rem', color: '#0284c7', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Estándar</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Nombre</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#d97706', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Velocidad</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Cable Base</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#2563eb', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Frecuencia</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Uso de Pares</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#059669', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Modulación / Codificación</th>
-                <th style={{ padding: '0.75rem 1rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Distancia</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#0284c7', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Estándar</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Nombre</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#d97706', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Velocidad</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Cable Base</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#2563eb', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Frecuencia</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Uso de Pares</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#059669', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Modulación / Codificación</th>
+                <th style={{ padding: '0.6rem 0.85rem', color: '#111111', fontFamily: 'Fredoka, Outfit', fontWeight: '800' }}>Distancia</th>
               </tr>
             </thead>
             <tbody>
@@ -88,34 +88,34 @@ export function Slide12_ComparisonTable() {
                     onMouseEnter={() => setHighlightedRow(idx)}
                     onMouseLeave={() => setHighlightedRow(null)}
                     style={{
-                      borderBottom: '1.5px solid #e2e8f0',
-                      background: isHovered ? '#e0f2fe' : 'transparent',
+                      borderBottom: idx === tableData.length - 1 ? 'none' : '1.5px solid #e2e8f0',
+                      background: isHovered ? '#e0f2fe' : idx % 2 === 0 ? '#ffffff' : '#fafafa',
                       transition: 'background 0.15s ease',
                       cursor: 'pointer'
                     }}
                   >
-                    <td style={{ padding: '0.75rem 1rem', fontWeight: '800', fontFamily: 'JetBrains Mono', color: row.color }}>
+                    <td style={{ padding: '0.55rem 0.85rem', fontWeight: '800', fontFamily: 'JetBrains Mono', color: row.color }}>
                       {row.std}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>
                       {row.name}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', fontWeight: '800', color: '#d97706', fontFamily: 'JetBrains Mono' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', fontWeight: '800', color: '#d97706', fontFamily: 'JetBrains Mono' }}>
                       {row.speed}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', color: '#334155', fontWeight: '600' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', color: '#334155', fontWeight: '600' }}>
                       {row.cable}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', color: '#2563eb', fontFamily: 'JetBrains Mono', fontWeight: 'bold' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', color: '#2563eb', fontFamily: 'JetBrains Mono', fontWeight: 'bold' }}>
                       {row.freq}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', color: '#334155' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', color: '#334155' }}>
                       {row.pairs}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', color: '#059669', fontFamily: 'JetBrains Mono', fontSize: '0.82rem', fontWeight: 'bold' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', color: '#059669', fontFamily: 'JetBrains Mono', fontSize: '0.8rem', fontWeight: 'bold' }}>
                       {row.mod}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', color: '#111111', fontWeight: '800' }}>
+                    <td style={{ padding: '0.55rem 0.85rem', color: '#111111', fontWeight: '800' }}>
                       {row.dist}
                     </td>
                   </tr>
@@ -125,17 +125,17 @@ export function Slide12_ComparisonTable() {
           </table>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginTop: '0.65rem' }}>
-          <div className="inner-box">
-            <span style={{ fontSize: '0.76rem', color: '#475569', fontWeight: '700' }}>Salto de Frecuencia</span>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', flexShrink: 0 }}>
+          <div className="inner-box" style={{ textAlign: 'center', padding: '0.55rem 0.85rem' }}>
+            <span style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Salto de Frecuencia</span>
             <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0284c7', fontFamily: 'Fredoka, Outfit' }}>16 MHz ➔ 500 MHz (31x)</div>
           </div>
-          <div className="inner-box">
-            <span style={{ fontSize: '0.76rem', color: '#475569', fontWeight: '700' }}>Salto de Velocidad</span>
+          <div className="inner-box" style={{ textAlign: 'center', padding: '0.55rem 0.85rem' }}>
+            <span style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Salto de Velocidad</span>
             <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#d97706', fontFamily: 'Fredoka, Outfit' }}>10 Mbps ➔ 10,000 Mbps (1,000x)</div>
           </div>
-          <div className="inner-box">
-            <span style={{ fontSize: '0.76rem', color: '#475569', fontWeight: '700' }}>Conector Universal</span>
+          <div className="inner-box" style={{ textAlign: 'center', padding: '0.55rem 0.85rem' }}>
+            <span style={{ fontSize: '0.74rem', color: '#475569', fontWeight: '700' }}>Conector Universal</span>
             <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#059669', fontFamily: 'Fredoka, Outfit' }}>RJ-45 (8P8C) Inalterado</div>
           </div>
         </div>
