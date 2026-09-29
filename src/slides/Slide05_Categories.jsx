@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Zap, Gauge, Shield, Sparkles } from 'lucide-react';
+import { Layers, Zap, Gauge, Shield, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export function Slide05_Categories() {
   const [selectedCat, setSelectedCat] = useState('cat6a');
@@ -11,8 +11,18 @@ export function Slide05_Categories() {
       speed: '10 Mbps',
       standard: '10BASE-T (802.3i)',
       distance: '100 metros',
-      crossSection: 'UTP básico (2-3 trenzas por pie)',
-      features: ['Trenzado ligero no blindado (UTP)', 'Suficiente para telefonía analógica y 10BASE-T', 'Utiliza 2 pares (4 hilos)'],
+      structureTag: 'UTP BÁSICO (SUELTO)',
+      structureDesc: 'Sin blindaje · Trenzado muy holgado (2-3 vueltas/pie)',
+      features: [
+        'Trenzado ligero no blindado (2-3 vueltas/pie)',
+        'Suficiente para telefonía analógica y 10BASE-T',
+        'Pares con holgura y cubierta plástica delgada'
+      ],
+      anatomy: [
+        { label: 'Cubierta Exterior', desc: 'PVC estándar delgada sin relleno interno', icon: '⚪' },
+        { label: '4 Pares de Cobre', desc: 'Trenzado suelto (2-3 vueltas/pie)', icon: '🌀' },
+        { label: 'Blindaje / Separador', desc: 'Sin apantallar ni cruceta (UTP básico)', icon: '❌' }
+      ],
       color: '#64748b'
     },
     cat5: {
@@ -21,8 +31,18 @@ export function Slide05_Categories() {
       speed: '100 Mbps',
       standard: '100BASE-TX (802.3u)',
       distance: '100 metros',
-      crossSection: 'UTP con ~3-4 trenzas por pulgada',
-      features: ['Trenzado más denso y uniforme', 'Habilitó Fast Ethernet (100 Mbps)', 'Soporta 100BASE-TX en 2 pares'],
+      structureTag: 'UTP COMPACTO DENSO',
+      structureDesc: 'Trenzado uniforme (3-4 vueltas/pulgada) · Ajuste ceñido',
+      features: [
+        'Trenzado 3x más denso que Cat 3',
+        'Habilitó Fast Ethernet (100 Mbps)',
+        'Chaqueta ceñida sin holgura interna'
+      ],
+      anatomy: [
+        { label: 'Cubierta Exterior', desc: 'PVC ajustada que agrupa los pares', icon: '⚪' },
+        { label: '4 Pares de Cobre', desc: 'Trenzado denso (3-4 vueltas/pulgada)', icon: '🌀' },
+        { label: 'Rendimiento', desc: '100 Mbps Fast Ethernet estable a 100 MHz', icon: '⚡' }
+      ],
       color: '#0284c7'
     },
     cat5e: {
@@ -31,8 +51,18 @@ export function Slide05_Categories() {
       speed: '1,000 Mbps (1 Gbps)',
       standard: '1000BASE-T (802.3ab)',
       distance: '100 metros',
-      crossSection: 'Tolerancias estrictas + NEXT/FEXT',
-      features: ['Misma frecuencia (100 MHz) que Cat 5', 'Estrictos límites contra diafonía de retorno', 'Estándar rey para Gigabit en 4 pares'],
+      structureTag: 'TORSIÓN ASIMÉTRICA + RIPCORD',
+      structureDesc: 'Paso de trenzado distinto en cada par + Hilo de nylon',
+      features: [
+        'Paso de torsión asimétrico calibrado por par',
+        'Hilo de desgarro de nylon (Ripcord) integrado',
+        'Control estricto de NEXT/FEXT para Gigabit 4 pares'
+      ],
+      anatomy: [
+        { label: 'Torsión Asimétrica', desc: 'Paso calibrado distinto en cada par', icon: '🌀' },
+        { label: 'Hilo Ripcord', desc: 'Nylon central para desgarro de chaqueta', icon: '🧵' },
+        { label: 'Control NEXT/FEXT', desc: 'Tolerancias estrictas para Gigabit 1000BASE-T', icon: '🛡️' }
+      ],
       color: '#059669'
     },
     cat6: {
@@ -41,8 +71,18 @@ export function Slide05_Categories() {
       speed: '1 Gbps (100m) / 10 Gbps (55m)',
       standard: '10GBASE-T limitado',
       distance: '55m para 10G / 100m para 1G',
-      crossSection: 'Cruceta plástica interna (Spline)',
-      features: ['Cruceta plástica aislante central (Spline)', 'Reduce diafonía interna drásticamente', '10 Gbps limitado a 55m por Alien Crosstalk'],
+      structureTag: 'CRUCETA PLÁSTICA (SPLINE)',
+      structureDesc: 'Separador central en cruz que aísla los 4 cuadrantes',
+      features: [
+        'Cruceta plástica aislante central (Spline)',
+        'Elimina físicamente la diafonía entre pares',
+        '10 Gbps limitado a 55m por Alien Crosstalk'
+      ],
+      anatomy: [
+        { label: 'Cruceta Central (Spline)', desc: 'Polietileno que aísla los 4 pares en cruz', icon: '➕' },
+        { label: 'Calibre 23 AWG', desc: 'Conductores de cobre de mayor sección', icon: '⚡' },
+        { label: 'Diafonía Interna Cero', desc: 'Elimina interacción magnética entre pares', icon: '🛡️' }
+      ],
       color: '#d97706'
     },
     cat6a: {
@@ -51,8 +91,18 @@ export function Slide05_Categories() {
       speed: '10,000 Mbps (10 Gbps)',
       standard: '10GBASE-T (802.3an)',
       distance: '100 metros garantizados',
-      crossSection: 'F/UTP o S/FTP con blindaje global/par',
-      features: ['500 MHz de ancho de banda analógico', 'Blindaje foil que elimina Alien Crosstalk (ANEXT)', 'Obligatorio para 10 Gbps a 100m en canaletas'],
+      structureTag: 'BLINDAJE FOIL + DRENAJE + CRUCETA',
+      structureDesc: 'Lámina de aluminio reflectora + Hilo de tierra + Cruceta',
+      features: [
+        'Lámina de blindaje metálico Foil que bloquea ANEXT',
+        'Hilo de drenaje conductor de cobre para puesta a tierra',
+        'Cruceta central + 500 MHz garantizados a 100m'
+      ],
+      anatomy: [
+        { label: 'Blindaje Foil (Aluminio)', desc: 'Bloquea el Alien Crosstalk a 500 MHz', icon: '🛡️' },
+        { label: 'Hilo de Drenaje', desc: 'Cobre estañado para descarga electrostática', icon: '⚡' },
+        { label: 'Cruceta + Chaqueta Gruesa', desc: 'Alcance garantizado a 100m en canaletas', icon: '➕' }
+      ],
       color: '#e11d48'
     }
   };
@@ -145,8 +195,8 @@ export function Slide05_Categories() {
           </div>
         </div>
 
-        {/* Right: Structural Cross-Section Diagram */}
-        <div className="interactive-panel" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* Right: Structural Cross-Section Diagram with Side Legends */}
+        <div className="interactive-panel" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '0.5rem' }}>
           <div className="interactive-panel-header" style={{ width: '100%' }}>
             <span className="interactive-title">
               <Shield size={18} />
@@ -157,50 +207,97 @@ export function Slide05_Categories() {
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.35rem 0' }}>
-            <svg width="200" height="200" viewBox="0 0 240 240">
-              {/* Outer Jacket */}
-              <circle cx="120" cy="120" r="95" fill="#f1f8fc" stroke="#111111" strokeWidth="3" />
-              
-              {/* Shielding foil if Cat 6a */}
-              {selectedCat === 'cat6a' && (
-                <circle cx="120" cy="120" r="88" fill="none" stroke="#e11d48" strokeWidth="2.5" strokeDasharray="4 4" />
-              )}
+          {/* 2-Column Split: SVG on Left + Clean Callout Legends on Right */}
+          <div style={{ display: 'grid', gridTemplateColumns: '175px 1fr', gap: '0.85rem', alignItems: 'center', width: '100%', margin: '0.15rem 0' }}>
+            {/* Clean SVG Diagram */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <svg width="170" height="170" viewBox="0 0 200 200">
+                {/* Outer Jacket */}
+                <circle
+                  cx="100"
+                  cy="100"
+                  r={selectedCat === 'cat3' ? 82 : selectedCat === 'cat5' ? 85 : selectedCat === 'cat5e' ? 87 : selectedCat === 'cat6' ? 89 : 92}
+                  fill="#f8fafc"
+                  stroke="#111111"
+                  strokeWidth={selectedCat === 'cat3' ? '2' : selectedCat === 'cat5' ? '2.5' : selectedCat === 'cat5e' ? '3' : selectedCat === 'cat6' ? '3.5' : '4'}
+                />
 
-              {/* Plastic Spline if Cat 6 or Cat 6a */}
-              {(selectedCat === 'cat6' || selectedCat === 'cat6a') && (
-                <g stroke="#111111" strokeWidth="2.5">
-                  <line x1="120" y1="40" x2="120" y2="200" />
-                  <line x1="40" y1="120" x2="200" y2="120" />
+                {/* Cat 6a Metallic Foil Shielding Layer */}
+                {selectedCat === 'cat6a' && (
+                  <circle cx="100" cy="100" r="85" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2.5" strokeDasharray="5 3" />
+                )}
+
+                {/* Cat 6a Ground Drain Wire */}
+                {selectedCat === 'cat6a' && (
+                  <circle cx="155" cy="55" r="4.5" fill="#f59e0b" stroke="#111" strokeWidth="1.5" />
+                )}
+
+                {/* Cat 5e Ripcord (Nylon thread) in center */}
+                {selectedCat === 'cat5e' && (
+                  <g transform="translate(100, 100)">
+                    <circle cx="0" cy="0" r="4" fill="#ffffff" stroke="#059669" strokeWidth="1.8" />
+                    <circle cx="0" cy="0" r="1.5" fill="#059669" />
+                  </g>
+                )}
+
+                {/* Cat 6 and Cat 6a Plastic Spline Cross-Separator */}
+                {(selectedCat === 'cat6' || selectedCat === 'cat6a') && (
+                  <g>
+                    <rect x="94" y="25" width="12" height="150" rx="3" fill="#ffffff" stroke="#111111" strokeWidth="1.8" />
+                    <rect x="25" y="94" width="150" height="12" rx="3" fill="#ffffff" stroke="#111111" strokeWidth="1.8" />
+                    <circle cx="100" cy="100" r="9" fill="#f1f8fc" stroke="#111" strokeWidth="1.5" />
+                  </g>
+                )}
+
+                {/* 4 Pairs Position & Layout */}
+                {/* Pair 1: Blue / White-Blue */}
+                <g transform={selectedCat === 'cat3' ? "translate(58, 60)" : selectedCat === 'cat5' || selectedCat === 'cat5e' ? "translate(68, 68)" : "translate(60, 60)"}>
+                  <circle cx="0" cy="0" r="11" fill="#2563eb" stroke="#111" strokeWidth="1.6" />
+                  <circle cx="9" cy="9" r="11" fill="#93c5fd" stroke="#111" strokeWidth="1.6" />
                 </g>
-              )}
 
-              {/* 4 Pairs of Twisted Wires */}
-              {/* Pair 1: Blue / White-Blue */}
-              <g transform="translate(80, 80)">
-                <circle cx="0" cy="0" r="14" fill="#2563eb" stroke="#111" strokeWidth="1.8" />
-                <circle cx="12" cy="12" r="14" fill="#93c5fd" stroke="#111" strokeWidth="1.8" />
-              </g>
-              {/* Pair 2: Orange / White-Orange */}
-              <g transform="translate(145, 80)">
-                <circle cx="0" cy="0" r="14" fill="#ea580c" stroke="#111" strokeWidth="1.8" />
-                <circle cx="12" cy="12" r="14" fill="#fdba74" stroke="#111" strokeWidth="1.8" />
-              </g>
-              {/* Pair 3: Green / White-Green */}
-              <g transform="translate(80, 145)">
-                <circle cx="0" cy="0" r="14" fill="#16a34a" stroke="#111" strokeWidth="1.8" />
-                <circle cx="12" cy="12" r="14" fill="#86efac" stroke="#111" strokeWidth="1.8" />
-              </g>
-              {/* Pair 4: Brown / White-Brown */}
-              <g transform="translate(145, 145)">
-                <circle cx="0" cy="0" r="14" fill="#78350f" stroke="#111" strokeWidth="1.8" />
-                <circle cx="12" cy="12" r="14" fill="#d6d3d1" stroke="#111" strokeWidth="1.8" />
-              </g>
+                {/* Pair 2: Orange / White-Orange */}
+                <g transform={selectedCat === 'cat3' ? "translate(132, 58)" : selectedCat === 'cat5' || selectedCat === 'cat5e' ? "translate(122, 68)" : "translate(130, 60)"}>
+                  <circle cx="0" cy="0" r="11" fill="#ea580c" stroke="#111" strokeWidth="1.6" />
+                  <circle cx="9" cy="9" r="11" fill="#fdba74" stroke="#111" strokeWidth="1.6" />
+                </g>
 
-              <text x="120" y="230" textAnchor="middle" fill="#111111" fontSize="10.5" fontFamily="Fredoka, Outfit" fontWeight="bold">
-                {selectedCat === 'cat6' || selectedCat === 'cat6a' ? 'CRUCETA AISLANTE INTERNA' : 'PAR TRENZADO DIRECTO'}
-              </text>
-            </svg>
+                {/* Pair 3: Green / White-Green */}
+                <g transform={selectedCat === 'cat3' ? "translate(56, 132)" : selectedCat === 'cat5' || selectedCat === 'cat5e' ? "translate(68, 122)" : "translate(60, 130)"}>
+                  <circle cx="0" cy="0" r="11" fill="#16a34a" stroke="#111" strokeWidth="1.6" />
+                  <circle cx="9" cy="9" r="11" fill="#86efac" stroke="#111" strokeWidth="1.6" />
+                </g>
+
+                {/* Pair 4: Brown / White-Brown */}
+                <g transform={selectedCat === 'cat3' ? "translate(130, 130)" : selectedCat === 'cat5' || selectedCat === 'cat5e' ? "translate(122, 122)" : "translate(130, 130)"}>
+                  <circle cx="0" cy="0" r="11" fill="#78350f" stroke="#111" strokeWidth="1.6" />
+                  <circle cx="9" cy="9" r="11" fill="#d6d3d1" stroke="#111" strokeWidth="1.6" />
+                </g>
+              </svg>
+            </div>
+
+            {/* Right: Anatomical Callouts & Legends */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+              <div style={{ fontSize: '0.74rem', fontWeight: '800', color: cat.color, textTransform: 'uppercase', fontFamily: 'Fredoka, Outfit', letterSpacing: '0.04em' }}>
+                Anatomía del Cable:
+              </div>
+              {cat.anatomy.map((item, idx) => (
+                <div key={idx} className="inner-box" style={{ padding: '0.35rem 0.6rem', display: 'flex', flexDirection: 'column', gap: '1px' }}>
+                  <div style={{ fontSize: '0.76rem', fontWeight: '800', color: '#111111', display: 'flex', alignItems: 'center', gap: '4px', fontFamily: 'Fredoka, Outfit' }}>
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                  <div style={{ fontSize: '0.72rem', color: '#475569', lineHeight: '1.3' }}>
+                    {item.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Micro Footer Explaining the exact structural change */}
+          <div className="inner-box" style={{ width: '100%', padding: '0.35rem 0.65rem', textAlign: 'center', fontSize: '0.76rem', color: '#111111', fontWeight: '700' }}>
+            🏷️ <strong>{cat.structureTag}:</strong> {cat.structureDesc}
           </div>
         </div>
       </div>

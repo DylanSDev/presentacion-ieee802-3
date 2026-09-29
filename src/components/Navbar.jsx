@@ -1,6 +1,6 @@
-import React from 'react';
-import { ACTS } from '../data/slidesData';
-import { Grid, Maximize, Minimize, BookOpen } from 'lucide-react';
+import React from "react";
+import { ACTS } from "../data/slidesData";
+import { Grid, Maximize, Minimize, BookOpen } from "lucide-react";
 
 export function Navbar({
   currentSlideData,
@@ -8,7 +8,7 @@ export function Navbar({
   currentSlideIndex,
   onOpenGrid,
   isFullscreen,
-  onToggleFullscreen
+  onToggleFullscreen,
 }) {
   const currentAct = ACTS.find((a) => a.id === currentSlideData.actId);
   const progressPercent = ((currentSlideIndex + 1) / totalSlides) * 100;
@@ -17,19 +17,27 @@ export function Navbar({
     <header className="presentation-header">
       {/* Top progress bar */}
       <div className="progress-bar-container">
-        <div className="progress-bar-fill" style={{ width: `${progressPercent}%` }} />
+        <div
+          className="progress-bar-fill"
+          style={{ width: `${progressPercent}%` }}
+        />
       </div>
 
       <div className="header-brand">
         <span className="brand-badge">UTN - FRT · 2026</span>
-        <span className="brand-title">IEEE 802.3 y sus Actualizaciones: Informe y Comparaciones</span>
+        <span className="brand-title">IEEE 802.3: Informe y Comparaciones</span>
       </div>
 
       <div className="header-controls">
         {currentAct && (
           <div className="act-indicator">
-            <span className="act-dot" style={{ backgroundColor: currentAct.color }} />
-            <span style={{ color: '#111111', fontWeight: '700' }}>{currentAct.title}</span>
+            <span
+              className="act-dot"
+              style={{ backgroundColor: currentAct.color }}
+            />
+            <span style={{ color: "#111111", fontWeight: "700" }}>
+              {currentAct.title}
+            </span>
           </div>
         )}
 
@@ -46,9 +54,17 @@ export function Navbar({
         <button
           className="icon-btn"
           onClick={onToggleFullscreen}
-          title={isFullscreen ? "Salir de Pantalla Completa (F)" : "Pantalla Completa (F)"}
+          title={
+            isFullscreen
+              ? "Salir de Pantalla Completa (F)"
+              : "Pantalla Completa (F)"
+          }
         >
-          {isFullscreen ? <Minimize size={18} strokeWidth={2.4} /> : <Maximize size={18} strokeWidth={2.4} />}
+          {isFullscreen ? (
+            <Minimize size={18} strokeWidth={2.4} />
+          ) : (
+            <Maximize size={18} strokeWidth={2.4} />
+          )}
         </button>
       </div>
     </header>

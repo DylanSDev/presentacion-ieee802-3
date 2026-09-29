@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ChevronRight, Heart, Share2, Sparkles } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from "react";
+import { ChevronRight, Heart, Share2, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Slide01_Hero({ onStart, onSelectSlide }) {
   const [likes, setLikes] = useState(142);
@@ -8,11 +8,11 @@ export function Slide01_Hero({ onStart, onSelectSlide }) {
   const [showToast, setShowToast] = useState(false);
 
   const authors = [
-    { name: 'Dylan Diaz' },
-    { name: 'Atilio Vergara' },
-    { name: 'Fernando Jimenez' },
-    { name: 'Celina Zato Sosa' },
-    { name: 'Ignacio Veliz' }
+    { name: "Dylan Diaz" },
+    { name: "Atilio Vergara" },
+    { name: "Fernando Jimenez" },
+    { name: "Celina Zato Sosa" },
+    { name: "Ignacio Veliz" },
   ];
 
   const handleNav = (slideNum) => {
@@ -48,17 +48,39 @@ export function Slide01_Hero({ onStart, onSelectSlide }) {
         className="hero-top-bar"
       >
         <div className="hero-pill-nav">
-          <button className="hero-nav-link" onClick={() => handleNav(1)}>INICIO</button>
-          <button className="hero-nav-link" onClick={() => handleNav(2)}>MODELO OSI</button>
-          <button className="hero-nav-link" onClick={() => handleNav(3)}>TOPOLOGÍA</button>
-          <button className="hero-nav-link" onClick={() => handleNav(4)}>FÍSICA PAR</button>
-          <button className="hero-nav-link" onClick={() => handleNav(5)}>CATEGORÍAS</button>
-          <button className="hero-nav-link" onClick={() => handleNav(6)}>DÚPLEX</button>
-          <button className="hero-nav-link" onClick={() => handleNav(7)}>10M A 10G</button>
-          <button className="hero-nav-link" onClick={() => handleNav(11)}>FIBRA</button>
-          <button className="hero-nav-link" onClick={() => handleNav(12)}>TABLA</button>
-          <button className="hero-nav-link" onClick={() => handleNav(14)}>PoE</button>
-          <button className="hero-nav-link" onClick={() => handleNav(15)}>CIERRE</button>
+          <button className="hero-nav-link" onClick={() => handleNav(1)}>
+            INICIO
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(2)}>
+            MODELO OSI
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(3)}>
+            TOPOLOGÍA
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(4)}>
+            FÍSICA PAR
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(5)}>
+            CATEGORÍAS
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(6)}>
+            DÚPLEX
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(7)}>
+            10M A 10G
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(11)}>
+            FIBRA
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(12)}>
+            TABLA
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(14)}>
+            PoE
+          </button>
+          <button className="hero-nav-link" onClick={() => handleNav(15)}>
+            CIERRE
+          </button>
         </div>
 
         <div className="hero-top-actions">
@@ -97,25 +119,26 @@ export function Slide01_Hero({ onStart, onSelectSlide }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.9 }}
             style={{
-              position: 'absolute',
-              top: '65px',
-              right: '24px',
+              position: "absolute",
+              top: "65px",
+              right: "24px",
               zIndex: 100,
-              background: '#ffffff',
-              border: '2px solid #111111',
-              borderRadius: '10px',
-              padding: '0.5rem 0.9rem',
-              boxShadow: '3px 3px 0px #111111',
-              fontFamily: 'Outfit, sans-serif',
+              background: "#ffffff",
+              border: "2px solid #111111",
+              borderRadius: "10px",
+              padding: "0.5rem 0.9rem",
+              boxShadow: "3px 3px 0px #111111",
+              fontFamily: "Outfit, sans-serif",
               fontWeight: 700,
-              fontSize: '0.82rem',
-              color: '#111111',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.45rem'
+              fontSize: "0.82rem",
+              color: "#111111",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.45rem",
             }}
           >
-            <Sparkles size={15} color="#0284c7" /> UTN - FRT · Cátedra de Redes de Datos · 2026
+            <Sparkles size={15} color="#0284c7" /> UTN - FRT · Cátedra de Redes
+            de Datos · 2026
           </motion.div>
         )}
       </AnimatePresence>
@@ -131,7 +154,6 @@ export function Slide01_Hero({ onStart, onSelectSlide }) {
             className="hero-display-title"
           >
             <span className="hero-title-blue">IEEE 802.3</span>
-            <span className="hero-title-white-1">Y SUS ACTUALIZACIONES</span>
             <span className="hero-title-white-2">INFORME Y COMPARACIONES</span>
           </motion.div>
 
@@ -143,9 +165,11 @@ export function Slide01_Hero({ onStart, onSelectSlide }) {
             className="hero-subtitle-container"
           >
             <div className="hero-subtitle-pill">
-              <strong>AÑO 2026 · UTN - FRT</strong><br />
-              <span style={{ fontSize: '0.88rem', color: '#475569' }}>
-                Cátedra de Redes de Datos — Evolución del Par Trenzado de 10 Mbps a 10 Gbps.
+              <strong>AÑO 2026 · UTN - FRT</strong>
+              <br />
+              <span style={{ fontSize: "0.88rem", color: "#475569" }}>
+                Cátedra de Redes de Datos — Evolución del Par Trenzado de 10
+                Mbps a 10 Gbps.
               </span>
             </div>
           </motion.div>
@@ -158,7 +182,8 @@ export function Slide01_Hero({ onStart, onSelectSlide }) {
             className="hero-students-section"
           >
             <div className="hero-students-label">
-              <Sparkles size={13} color="#1f4f6e" /> Alumnos · UTN Facultad Regional Tucumán
+              <Sparkles size={13} color="#1f4f6e" /> Alumnos · UTN Facultad
+              Regional Tucumán
             </div>
             <div className="hero-students-row">
               {authors.map((author, index) => (
