@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Zap, Gauge, Shield } from 'lucide-react';
+import { Layers, Zap, Gauge, Shield, Sparkles } from 'lucide-react';
 
 export function Slide05_Categories() {
   const [selectedCat, setSelectedCat] = useState('cat6a');
@@ -62,33 +62,37 @@ export function Slide05_Categories() {
   return (
     <div className="slide-content-wrapper">
       <div className="slide-header">
-        <div className="slide-tag">Especificación TIA/EIA · Estándares de Cableado</div>
+        <div className="slide-tag">
+          <Sparkles size={14} /> Especificación TIA/EIA · Estándares de Cableado
+        </div>
         <h2 className="slide-title">Categorías de Cables: De Cat 3 a Cat 6a</h2>
         <p className="slide-subtitle">
-          A medida que las velocidades se multiplicaron, el cable de cobre debió elevar su frecuencia de operación y aislamiento.
+          A medida que las velocidades se multiplicaron, el cable de cobre debió elevar su frecuencia analógica de operación y blindaje estructural.
         </p>
       </div>
 
       <div className="slide-body grid-2col-wide-left">
         {/* Left: Interactive Category Selector */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.4rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.5rem' }}>
             {Object.keys(categories).map((k) => (
               <button
                 key={k}
                 onClick={() => setSelectedCat(k)}
                 style={{
-                  padding: '0.6rem 0.3rem',
-                  borderRadius: '8px',
-                  background: selectedCat === k ? 'var(--cyan-glow)' : 'var(--bg-inner-box)',
-                  border: selectedCat === k ? `1.5px solid ${categories[k].color}` : '1px solid var(--border-subtle)',
-                  color: selectedCat === k ? 'var(--text-heading)' : 'var(--text-muted)',
-                  fontFamily: 'JetBrains Mono',
-                  fontSize: '0.82rem',
-                  fontWeight: selectedCat === k ? '800' : '600',
+                  padding: '0.65rem 0.3rem',
+                  borderRadius: '10px',
+                  background: selectedCat === k ? '#e0f2fe' : '#ffffff',
+                  border: '2px solid #111111',
+                  boxShadow: selectedCat === k ? '3.5px 3.5px 0px #111111' : '2px 2px 0px #111111',
+                  color: selectedCat === k ? '#111111' : '#475569',
+                  fontFamily: 'Fredoka, Outfit, sans-serif',
+                  fontSize: '0.88rem',
+                  fontWeight: '800',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  textAlign: 'center'
+                  transition: 'all 0.15s ease',
+                  textAlign: 'center',
+                  transform: selectedCat === k ? 'translate(-2px, -2px)' : 'none'
                 }}
               >
                 {k.toUpperCase()}
@@ -97,42 +101,42 @@ export function Slide05_Categories() {
           </div>
 
           {/* Selected Category Feature Display */}
-          <div className="glass-card" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem', borderLeft: `4px solid ${cat.color}` }}>
+          <div className="glass-card" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.85rem', borderLeft: `6px solid ${cat.color}` }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-heading)' }}>{cat.name}</h3>
-              <span style={{ fontFamily: 'JetBrains Mono', fontWeight: 'bold', color: cat.color, background: 'var(--bg-inner-box)', padding: '3px 8px', borderRadius: '4px', border: '1px solid var(--border-subtle)', fontSize: '0.8rem' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#111111', fontFamily: 'Fredoka, Outfit' }}>{cat.name}</h3>
+              <span style={{ fontFamily: 'JetBrains Mono', fontWeight: '800', color: cat.color, background: '#f1f8fc', padding: '3px 8px', borderRadius: '6px', border: '1.5px solid #111111', boxShadow: '1.5px 1.5px 0px #111111', fontSize: '0.78rem' }}>
                 {cat.standard}
               </span>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               <div className="inner-box">
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Gauge size={14} color="var(--cyan-primary)" /> Ancho de Banda (Frecuencia)
+                <div style={{ fontSize: '0.78rem', color: '#475569', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '700' }}>
+                  <Gauge size={14} color="#0284c7" /> Ancho de Banda (Frecuencia)
                 </div>
-                <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--cyan-primary)', fontFamily: 'JetBrains Mono' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0284c7', fontFamily: 'Fredoka, Outfit', marginTop: '2px' }}>
                   {cat.freq}
                 </div>
               </div>
 
               <div className="inner-box">
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Zap size={14} color="var(--amber-accent)" /> Velocidad Máxima
+                <div style={{ fontSize: '0.78rem', color: '#475569', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '700' }}>
+                  <Zap size={14} color="#d97706" /> Velocidad Máxima
                 </div>
-                <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--amber-accent)', fontFamily: 'JetBrains Mono' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', color: '#d97706', fontFamily: 'Fredoka, Outfit', marginTop: '2px' }}>
                   {cat.speed}
                 </div>
               </div>
             </div>
 
             <div>
-              <div style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.4rem', textTransform: 'uppercase', fontFamily: 'JetBrains Mono' }}>
+              <div style={{ fontSize: '0.78rem', fontWeight: '800', color: '#111111', marginBottom: '0.4rem', textTransform: 'uppercase', fontFamily: 'Fredoka, Outfit' }}>
                 Características Físicas Clave:
               </div>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                 {cat.features.map((feat, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: cat.color }} />
+                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.86rem', color: '#334155' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: cat.color, border: '1px solid #111' }} />
                     {feat}
                   </li>
                 ))}
@@ -152,16 +156,16 @@ export function Slide05_Categories() {
 
           <svg width="240" height="240" viewBox="0 0 240 240">
             {/* Outer Jacket */}
-            <circle cx="120" cy="120" r="95" fill="var(--svg-card-fill)" stroke={cat.color} strokeWidth="3" />
+            <circle cx="120" cy="120" r="95" fill="#f1f8fc" stroke="#111111" strokeWidth="3" />
             
             {/* Shielding foil if Cat 6a */}
             {selectedCat === 'cat6a' && (
-              <circle cx="120" cy="120" r="88" fill="none" stroke="var(--rose-accent)" strokeWidth="2" strokeDasharray="3 3" />
+              <circle cx="120" cy="120" r="88" fill="none" stroke="#e11d48" strokeWidth="2.5" strokeDasharray="4 4" />
             )}
 
             {/* Plastic Spline if Cat 6 or Cat 6a */}
             {(selectedCat === 'cat6' || selectedCat === 'cat6a') && (
-              <g stroke="var(--svg-grid-stroke)" strokeWidth="2.5">
+              <g stroke="#111111" strokeWidth="2.5">
                 <line x1="120" y1="40" x2="120" y2="200" />
                 <line x1="40" y1="120" x2="200" y2="120" />
               </g>
@@ -170,27 +174,27 @@ export function Slide05_Categories() {
             {/* 4 Pairs of Twisted Wires */}
             {/* Pair 1: Blue / White-Blue */}
             <g transform="translate(80, 80)">
-              <circle cx="0" cy="0" r="14" fill="#2563eb" stroke="#fff" strokeWidth="1.5" />
-              <circle cx="12" cy="12" r="14" fill="#93c5fd" stroke="#fff" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="14" fill="#2563eb" stroke="#111" strokeWidth="1.8" />
+              <circle cx="12" cy="12" r="14" fill="#93c5fd" stroke="#111" strokeWidth="1.8" />
             </g>
             {/* Pair 2: Orange / White-Orange */}
             <g transform="translate(145, 80)">
-              <circle cx="0" cy="0" r="14" fill="#ea580c" stroke="#fff" strokeWidth="1.5" />
-              <circle cx="12" cy="12" r="14" fill="#fdba74" stroke="#fff" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="14" fill="#ea580c" stroke="#111" strokeWidth="1.8" />
+              <circle cx="12" cy="12" r="14" fill="#fdba74" stroke="#111" strokeWidth="1.8" />
             </g>
             {/* Pair 3: Green / White-Green */}
             <g transform="translate(80, 145)">
-              <circle cx="0" cy="0" r="14" fill="#16a34a" stroke="#fff" strokeWidth="1.5" />
-              <circle cx="12" cy="12" r="14" fill="#86efac" stroke="#fff" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="14" fill="#16a34a" stroke="#111" strokeWidth="1.8" />
+              <circle cx="12" cy="12" r="14" fill="#86efac" stroke="#111" strokeWidth="1.8" />
             </g>
             {/* Pair 4: Brown / White-Brown */}
             <g transform="translate(145, 145)">
-              <circle cx="0" cy="0" r="14" fill="#78350f" stroke="#fff" strokeWidth="1.5" />
-              <circle cx="12" cy="12" r="14" fill="#d6d3d1" stroke="#fff" strokeWidth="1.5" />
+              <circle cx="0" cy="0" r="14" fill="#78350f" stroke="#111" strokeWidth="1.8" />
+              <circle cx="12" cy="12" r="14" fill="#d6d3d1" stroke="#111" strokeWidth="1.8" />
             </g>
 
-            <text x="120" y="230" textAnchor="middle" fill="var(--svg-text-sub)" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">
-              {selectedCat === 'cat6' || selectedCat === 'cat6a' ? 'CRUCETA SEPARADORA INTERNA' : 'PAR TRENZADO DIRECTO'}
+            <text x="120" y="230" textAnchor="middle" fill="#111111" fontSize="11" fontFamily="Fredoka, Outfit" fontWeight="bold">
+              {selectedCat === 'cat6' || selectedCat === 'cat6a' ? 'CRUCETA AISLANTE INTERNA' : 'PAR TRENZADO DIRECTO'}
             </text>
           </svg>
         </div>

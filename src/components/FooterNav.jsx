@@ -15,8 +15,8 @@ export function FooterNav({
       <div className="slide-counter-badge">
         <span className="slide-counter-current">{currentSlide.toString().padStart(2, '0')}</span>
         <span>/ {totalSlides.toString().padStart(2, '0')}</span>
-        <span style={{ marginLeft: '1rem', color: '#64748b', fontSize: '0.75rem' }}>
-          Usá <span className="kbd-hint">←</span> <span className="kbd-hint">→</span> o <span className="kbd-hint">Espacio</span>
+        <span className="footer-nav-hint">
+          Navegá con <span className="kbd-hint">←</span> <span className="kbd-hint">→</span> o <span className="kbd-hint">Espacio</span>
         </span>
       </div>
 
@@ -24,9 +24,9 @@ export function FooterNav({
         <button
           className="icon-btn"
           onClick={onReset}
-          title="Ir a la primera diapositiva (Home)"
+          title="Ir al inicio (Home)"
         >
-          <RotateCcw size={16} />
+          <RotateCcw size={16} strokeWidth={2.4} />
         </button>
 
         <button
@@ -34,7 +34,7 @@ export function FooterNav({
           onClick={onToggleAutoPlay}
           title={isAutoPlay ? "Pausar reproducción automática" : "Reproducción automática"}
         >
-          {isAutoPlay ? <Pause size={16} /> : <Play size={16} />}
+          {isAutoPlay ? <Pause size={16} strokeWidth={2.4} /> : <Play size={16} strokeWidth={2.4} />}
         </button>
 
         <button
@@ -42,7 +42,7 @@ export function FooterNav({
           onClick={onPrev}
           disabled={currentSlide === 1}
         >
-          <ChevronLeft size={18} />
+          <ChevronLeft size={18} strokeWidth={2.6} />
           Anterior
         </button>
 
@@ -52,7 +52,7 @@ export function FooterNav({
           disabled={currentSlide === totalSlides}
         >
           Siguiente
-          <ChevronRight size={18} />
+          <ChevronRight size={18} strokeWidth={2.6} />
         </button>
       </div>
     </footer>
