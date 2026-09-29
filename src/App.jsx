@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { SLIDES } from './data/slidesData';
 import { Navbar } from './components/Navbar';
 import { FooterNav } from './components/FooterNav';
@@ -21,8 +22,32 @@ import { Slide13_WhyCopperWins } from './slides/Slide13_WhyCopperWins';
 import { Slide14_PoE } from './slides/Slide14_PoE';
 import { Slide15_Conclusion } from './slides/Slide15_Conclusion';
 
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 40 : -40,
+    opacity: 0
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.28,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? 40 : -40,
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: [0.7, 0, 0.84, 0]
+    }
+  })
+};
+
 function App() {
   const [currentSlide, setCurrentSlide] = useState(1);
+  const [direction, setDirection] = useState(1);
   const [isGridOpen, setIsGridOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
@@ -43,16 +68,24 @@ function App() {
   };
 
   const handleNext = useCallback(() => {
+    setDirection(1);
     setCurrentSlide((prev) => (prev < totalSlides ? prev + 1 : prev));
   }, [totalSlides]);
 
   const handlePrev = useCallback(() => {
+    setDirection(-1);
     setCurrentSlide((prev) => (prev > 1 ? prev - 1 : prev));
   }, []);
 
   const handleReset = useCallback(() => {
+    setDirection(-1);
     setCurrentSlide(1);
   }, []);
+
+  const handleSelectSlide = (slideId) => {
+    setDirection(slideId > currentSlide ? 1 : -1);
+    setCurrentSlide(slideId);
+  };
 
   const handleToggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -71,11 +104,8 @@ function App() {
   // Keyboard Navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // If modal is open, let Escape close it
       if (isGridOpen) {
-        if (e.key === 'Escape') {
-          setIsGridOpen(false);
-        }
+        if (e.key === 'Escape') setIsGridOpen(false);
         return;
       }
 
@@ -94,10 +124,12 @@ function App() {
           break;
         case 'Home':
           e.preventDefault();
+          setDirection(-1);
           setCurrentSlide(1);
           break;
         case 'End':
           e.preventDefault();
+          setDirection(1);
           setCurrentSlide(totalSlides);
           break;
         case 'm':
@@ -141,7 +173,10 @@ function App() {
     if (isAutoPlay) {
       timer = setInterval(() => {
         setCurrentSlide((prev) => {
-          if (prev < totalSlides) return prev + 1;
+          if (prev < totalSlides) {
+            setDirection(1);
+            return prev + 1;
+          }
           setIsAutoPlay(false);
           return prev;
         });
@@ -151,7 +186,7 @@ function App() {
   }, [isAutoPlay, totalSlides]);
 
   // Render Slide Component
-  const renderSlide = () => {
+  const renderSlideContent = () => {
     switch (currentSlide) {
       case 1:
         return <Slide01_Hero onStart={handleNext} />;
@@ -190,9 +225,6 @@ function App() {
 
   return (
     <div className="presentation-container" data-theme={theme}>
-      <div className="bg-grid-pattern" />
-      <div className="bg-radial-glow" />
-
       {/* Top Navbar */}
       <Navbar
         currentSlideData={currentSlideData}
@@ -205,9 +237,21 @@ function App() {
         onToggleTheme={handleToggleTheme}
       />
 
-      {/* Slide Viewport */}
+      {/* Slide Viewport with Clean Transition */}
       <main className="slide-viewport">
-        {renderSlide()}
+        <AnimatePresence custom={direction} mode="wait">
+          <motion.div
+            key={currentSlide}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            {renderSlideContent()}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Bottom Footer Navigation */}
@@ -226,7 +270,7 @@ function App() {
         isOpen={isGridOpen}
         onClose={() => setIsGridOpen(false)}
         currentSlide={currentSlide}
-        onSelectSlide={(slideId) => setCurrentSlide(slideId)}
+        onSelectSlide={handleSelectSlide}
       />
     </div>
   );
